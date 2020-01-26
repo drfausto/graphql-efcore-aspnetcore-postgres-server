@@ -1,7 +1,7 @@
 using GraphQL.Types;
 
 namespace EFCourse.GraphQL {
-	public class UniversityInputType : InputObjectGraphType {
+  public class UniversityInputType : InputObjectGraphType {
     public UniversityInputType() {
       Name = "UniversityInputType";
       Field<NonNullGraphType<StringGraphType>>("name");

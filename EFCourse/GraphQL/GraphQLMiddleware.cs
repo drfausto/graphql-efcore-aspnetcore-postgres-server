@@ -12,7 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace EFCourse.GraphQL
 {
-	public class GraphQLMiddleware
+    public class GraphQLMiddleware
     {
         private readonly RequestDelegate _next;
         private readonly IDocumentWriter _writer;
@@ -27,7 +27,7 @@ namespace EFCourse.GraphQL
             _executor = executor;
         }
 
-		public async Task InvokeAsync(
+        public async Task InvokeAsync(
             HttpContext httpContext, ISchema schema, IServiceProvider serviceProvider
         )
         {
@@ -48,7 +48,7 @@ namespace EFCourse.GraphQL
                         doc.Schema = schema;
                         doc.Query = request.Query;
                         doc.Inputs = request.Variables.ToInputs();
-						doc.Listeners.Add(serviceProvider.GetRequiredService<DataLoaderDocumentListener>());
+                        doc.Listeners.Add(serviceProvider.GetRequiredService<DataLoaderDocumentListener>());
                     }).ConfigureAwait(false);
 
                     var json = _writer.Write(result);

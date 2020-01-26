@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 
 namespace EFCourse {
-	class Program {
+  class Program {
     public static void Main(string[] args) {
       BuildWebHost(args).Run();
     }

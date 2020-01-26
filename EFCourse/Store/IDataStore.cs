@@ -4,21 +4,23 @@ using System.Threading.Tasks;
 using EFCourse.Models;
 
 namespace EFCourse.Store {
-	public interface IDataStore {
-		Task<IEnumerable<University>> GetUniversitiesAsync();		
-		Task<University> GetUniversityByIdAsync(int univId);		
+  public interface IDataStore {
+    Task<IEnumerable<University>> GetUniversitiesAsync();		
+    Task<University> GetUniversityByIdAsync(int univId);		
     Task<University> CreateUniversityAsync(University univ);
     
-		Task<IEnumerable<Department>> GetDepartmentsAsync();
-		Task<Department> GetDepartmentByIdAsync(int dptoId);
-		Task<IEnumerable<Department>> GetDepartmentByUniversityIdAsync(int dptoId);
-		Task<ILookup<int, Department>> GetDepartmentByUniversityIdAsync(
-			IEnumerable<int> univIds);
+    Task<IEnumerable<Department>> GetDepartmentsAsync();
+    Task<Department> GetDepartmentByIdAsync(int dptoId);
+    Task<IEnumerable<Department>> GetDepartmentByUniversityIdAsync(int dptoId);
+    Task<ILookup<int, Department>> GetDepartmentByUniversityIdAsync(
+      IEnumerable<int> univIds);
     Task<Department> CreateDepartmentAsync(Department dpto);
 
-		Task<IEnumerable<Course>> GetCoursesAsync();
-		Task<Course> GetCourseByIdAsync(int courId);    
-		Task<IEnumerable<Course>> GetCoursesByDepartmentIdAsync(int dptoId);		
-		Task<Course> CreateCourseAsync(Course course);
-	}
+    Task<IEnumerable<Course>> GetCoursesAsync();
+    Task<Course> GetCourseByIdAsync(int courId);    
+    Task<IEnumerable<Course>> GetCourseByDepartmentIdAsync(int dptoId);
+    Task<ILookup<int, Course>> GetCourseByDepartmentIdAsync(
+      IEnumerable<int> dptoIds);		
+    Task<Course> CreateCourseAsync(Course course);
+  }
 }

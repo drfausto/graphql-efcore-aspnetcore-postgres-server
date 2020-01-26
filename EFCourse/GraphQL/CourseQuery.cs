@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using GraphQL.DataLoader;
 using GraphQL.Types;
 using EFCourse.Models;
@@ -37,6 +36,14 @@ namespace EFCourse.GraphQL {
       .ResolveAsync(ctx => {
         var dptoId = ctx.GetArgument<int>("dptoId");
         return dataStore.GetDepartmentByIdAsync(dptoId);
+      });
+      
+      Field<ListGraphType<DepartmentType>, IEnumerable<Department>>()
+      .Name("DepartmentsbyUniversity")
+      .Argument<NonNullGraphType<IntGraphType>>("univId", "university univId")
+      .ResolveAsync(ctx => {      
+        var univId = ctx.GetArgument<int>("univId");
+        return dataStore.GetDepartmentByUniversityIdAsync(univId);
       });
 
       Field<ListGraphType<CourseType>, IEnumerable<Course>>()
